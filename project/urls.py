@@ -16,8 +16,14 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.http import HttpResponse
+
+# Define a simple home view
+def home(request):
+    return HttpResponse("Welcome to the Skin Disease Detection API!")
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.urls')),
+    path('', home),  # ✅ This adds a route for "/"
 ]

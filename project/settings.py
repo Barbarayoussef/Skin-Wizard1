@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-xi2**rh!g&(pb$#+v#ht%awqri@lsff@upvw4tqhvv!_yky860
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["*"] 
 
 
 # Application definition
@@ -94,16 +94,30 @@ REST_FRAMEWORK = {
     ],
 }
 
+#DATABASES = {
+ #   'default': {
+  #      'ENGINE': 'django.db.backends.postgresql',
+   #     'NAME': 'skin1',
+    #    'USER': 'postgres',
+     #   'PASSWORD': 'root',
+      #  'HOST': 'localhost',
+       # 'PORT': '5432',
+    #}
+#}
+import os
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'skin1',
-        'USER': 'postgres',
-        'PASSWORD': 'root',
-        'HOST': 'localhost',
-        'PORT': '5432',
+        'NAME': os.getenv('POSTGRES_DB', 'skin1'),
+        'USER': os.getenv('POSTGRES_USER', 'postgres'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'root'),
+        'HOST': os.getenv('POSTGRES_HOST', 'dp'),
+        'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
 }
+
+
 
 CORS_ALLOW_ALL_ORIGINS = True  # For development only. Specify allowed origins in production.
 

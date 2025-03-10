@@ -1,0 +1,31 @@
+#1-accounts
+#signup-login
+#doctor
+#paitient
+#profile-doctore -paitient
+#logout
+#2-Home page
+#header -chat- notification
+#Medical Vlogs-view details
+#doctor info -details-chat
+#Medicines-view details
+#3-Camera Scan
+#galary
+#pic
+#Scan Result
+#5-Avalibale Doctors
+#doctor info
+#6- Live Chat
+#7-MEDICINES Database
+#pharmacy details
+#8-Medical vlogs
+#blogs
+#9-patients form 
+
+
+#git init
+#git add .
+#git commit -m "first commit"
+#git branch -M main
+#git remote add origin https://github.com/Abhishek-2002/Healthcare.git
+#git push -u origin main
