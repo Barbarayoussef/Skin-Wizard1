@@ -31,6 +31,7 @@ ALLOWED_HOSTS = ["*"]
 # Application definition
 
 INSTALLED_APPS = [
+    'corsheaders',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -39,14 +40,15 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'rest_framework',
-    'corsheaders',  # Add this for handling CORS
+    'consultation',
+      
 ]
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
-    'corsheaders.middleware.CorsMiddleware',  # CORS middleware
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
@@ -88,9 +90,10 @@ WSGI_APPLICATION = 'project.wsgi.application'
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.TokenAuthentication',
     ],
     'DEFAULT_PERMISSION_CLASSES': [
-        'rest_framework.permissions.AllowAny',  # Open for signup APIs
+         'rest_framework.permissions.IsAuthenticated',  # Open for signup APIs
     ],
 }
 
@@ -111,8 +114,8 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': os.getenv('POSTGRES_DB', 'skin1'),
         'USER': os.getenv('POSTGRES_USER', 'postgres'),
-        'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'root'),
-        'HOST': os.getenv('POSTGRES_HOST', 'dp'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD', '123456789'),
+        'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
         'PORT': os.getenv('POSTGRES_PORT', '5432'),
     }
 }

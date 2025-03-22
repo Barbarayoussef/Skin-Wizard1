@@ -26,4 +26,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/accounts/', include('accounts.urls')),
     path('', home),  # ✅ This adds a route for "/"
+     path('api/consultation/', include('consultation.urls')),
 ]
